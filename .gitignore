@@ -9,6 +9,8 @@
 *.user
 *.userosscache
 *.sln.docstates
+*.dtbcache.v2
+*.cache
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -89,7 +91,6 @@ StyleCopReport.xml
 *.tmp
 *.tmp_proj
 *_wpftmp.csproj
-*.log
 *.tlog
 *.vspscc
 *.vssscc

@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A5968D68-09C1-45C5-BF1F-272F1CAE2D97}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SQL</RootNamespace>
+    <AssemblyName>SQL</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.9.4.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>packages\Autofac.4.9.4\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.12.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>packages\RestSharp.106.12.0\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.TypeExtensions, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Reflection.TypeExtensions.4.5.1\lib\net461\System.Reflection.TypeExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Tweetinvi, Version=5.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\TweetinviAPI.5.0.4\lib\netstandard2.0\Tweetinvi.dll</HintPath>
+    </Reference>
+    <Reference Include="Tweetinvi.Controllers, Version=5.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\TweetinviAPI.5.0.4\lib\netstandard2.0\Tweetinvi.Controllers.dll</HintPath>
+    </Reference>
+    <Reference Include="Tweetinvi.Core, Version=5.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\TweetinviAPI.5.0.4\lib\netstandard2.0\Tweetinvi.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Tweetinvi.Credentials, Version=5.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\TweetinviAPI.5.0.4\lib\netstandard2.0\Tweetinvi.Credentials.dll</HintPath>
+    </Reference>
+    <Reference Include="Tweetinvi.Logic, Version=5.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\TweetinviAPI.5.0.4\lib\netstandard2.0\Tweetinvi.Logic.dll</HintPath>
+    </Reference>
+    <Reference Include="Tweetinvi.Security, Version=5.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\TweetinviAPI.5.0.4\lib\netstandard2.0\Tweetinvi.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Tweetinvi.Streams, Version=5.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\TweetinviAPI.5.0.4\lib\netstandard2.0\Tweetinvi.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="Tweetinvi.WebLogic, Version=5.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\TweetinviAPI.5.0.4\lib\netstandard2.0\Tweetinvi.WebLogic.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\AssemblyNeutralAttribute.cs" />
+    <Compile Include="Data\CommandDefinition.cs" />
+    <Compile Include="Data\CommandFlags.cs" />
+    <Compile Include="Data\CustomPropertyTypeMap.cs" />
+    <Compile Include="Data\DataTableHandler.cs" />
+    <Compile Include="Data\DbString.cs" />
+    <Compile Include="Data\DefaultTypeMap.cs" />
+    <Compile Include="Data\DynamicParameters.cs" />
+    <Compile Include="Data\ExplicitConstructorAttribute.cs" />
+    <Compile Include="Data\FeatureSupport.cs" />
+    <Compile Include="Data\IWrappedDataReader.cs" />
+    <Compile Include="Data\SimpleMemberMap.cs" />
+    <Compile Include="Data\SqlMapper.cs" />
+    <Compile Include="Data\TableValuedParameter.cs" />
+    <Compile Include="Data\WrappedReader.cs" />
+    <Compile Include="SQL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\cExtensions.cs" />
+    <Compile Include="Utils\clsErrorInfo.cs" />
+    <Compile Include="Utils\Config\Comment.cs" />
+    <Compile Include="Utils\Config\Configuration.cs" />
+    <Compile Include="Utils\Config\Configuration.Deserialization.cs" />
+    <Compile Include="Utils\Config\Configuration.Parsing.cs" />
+    <Compile Include="Utils\Config\Configuration.Serialization.cs" />
+    <Compile Include="Utils\Config\ConfigurationElement.cs" />
+    <Compile Include="Utils\Config\ParserException.cs" />
+    <Compile Include="Utils\Config\Section.cs" />
+    <Compile Include="Utils\Config\Setting.cs" />
+    <Compile Include="Utils\Config\SettingValueCastException.cs" />
+    <Compile Include="Utils\Data\SqlMapper.cs" />
+    <Compile Include="Utils\Evaluator\Jace\AstBuilder.cs" />
+    <Compile Include="Utils\Evaluator\Jace\CalculationEngine.cs" />
+    <Compile Include="Utils\Evaluator\Jace\DataType.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Execution\ConstantInfo.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Execution\ConstantRegistry.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Execution\DynamicCompiler.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Execution\ExecutionMode.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Execution\FormulaBuilder.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Execution\FunctionInfo.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Execution\FunctionRegistry.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Execution\IConstantRegistry.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Execution\IExecutor.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Execution\IFunctionRegistry.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Execution\Interpreter.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Execution\ParameterInfo.cs" />
+    <Compile Include="Utils\Evaluator\Jace\FormulaContext.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Operations\Addition.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Operations\Constant.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Operations\Division.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Operations\Equal.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Operations\Exponentiation.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Operations\Function.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Operations\GreaterOrEqualThan.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Operations\GreaterThan.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Operations\LessOrEqualThan.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Operations\LessThan.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Operations\Modulo.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Operations\Multiplication.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Operations\NotEqual.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Operations\Operation.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Operations\Subtraction.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Operations\UnaryMinus.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Operations\Variable.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Optimizer.cs" />
+    <Compile Include="Utils\Evaluator\Jace\ParseException.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Tokenizer\Token.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Tokenizer\TokenReader.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Tokenizer\TokenType.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Util\EngineUtil.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Util\FuncAdapter.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Util\MathUtil.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Util\MemoryCache.cs" />
+    <Compile Include="Utils\Evaluator\Jace\Util\TypeExtensions.cs" />
+    <Compile Include="Utils\Evaluator\Jace\VariableNotDefinedException.cs" />
+    <Compile Include="Utils\Format\Core\Extensions\IFormatter.cs" />
+    <Compile Include="Utils\Format\Core\Extensions\IFormattingInfo.cs" />
+    <Compile Include="Utils\Format\Core\Extensions\ISelectorInfo.cs" />
+    <Compile Include="Utils\Format\Core\Extensions\ISource.cs" />
+    <Compile Include="Utils\Format\Core\Formatting\FormatCache.cs" />
+    <Compile Include="Utils\Format\Core\Formatting\FormatDetails.cs" />
+    <Compile Include="Utils\Format\Core\Formatting\FormattingException.cs" />
+    <Compile Include="Utils\Format\Core\Formatting\FormattingInfo.cs" />
+    <Compile Include="Utils\Format\Core\Output\IOutput.cs" />
+    <Compile Include="Utils\Format\Core\Output\StringOutput.cs" />
+    <Compile Include="Utils\Format\Core\Output\TextWriterOutput.cs" />
+    <Compile Include="Utils\Format\Core\Parsing\Format.cs" />
+    <Compile Include="Utils\Format\Core\Parsing\FormatItem.cs" />
+    <Compile Include="Utils\Format\Core\Parsing\LiteralText.cs" />
+    <Compile Include="Utils\Format\Core\Parsing\Parser.cs" />
+    <Compile Include="Utils\Format\Core\Parsing\ParsingErrors.cs" />
+    <Compile Include="Utils\Format\Core\Parsing\Placeholder.cs" />
+    <Compile Include="Utils\Format\Core\Parsing\Selector.cs" />
+    <Compile Include="Utils\Format\Core\Settings\CaseSensitivityType.cs" />
+    <Compile Include="Utils\Format\Core\Settings\ErrorAction.cs" />
+    <Compile Include="Utils\Format\Core\Settings\SmartSettings.cs" />
+    <Compile Include="Utils\Format\Extensions\ChooseFormatter.cs" />
+    <Compile Include="Utils\Format\Extensions\ConditionalFormatter.cs" />
+    <Compile Include="Utils\Format\Extensions\DefaultFormatter.cs" />
+    <Compile Include="Utils\Format\Extensions\DefaultSource.cs" />
+    <Compile Include="Utils\Format\Extensions\DictionarySource.cs" />
+    <Compile Include="Utils\Format\Extensions\ListFormatter.cs" />
+    <Compile Include="Utils\Format\Extensions\PluralLocalizationFormatter.cs" />
+    <Compile Include="Utils\Format\Extensions\ReflectionSource.cs" />
+    <Compile Include="Utils\Format\Extensions\TemplateFormatter.cs" />
+    <Compile Include="Utils\Format\Extensions\TimeFormatter.cs" />
+    <Compile Include="Utils\Format\Extensions\XElementFormatter.cs" />
+    <Compile Include="Utils\Format\Extensions\XmlSource.cs" />
+    <Compile Include="Utils\Format\Smart.cs" />
+    <Compile Include="Utils\Format\SmartExtensions.cs" />
+    <Compile Include="Utils\Format\SmartFormatter.cs" />
+    <Compile Include="Utils\Format\Utilities\FormatDelegate.cs" />
+    <Compile Include="Utils\Format\Utilities\PluralRules.cs" />
+    <Compile Include="Utils\Format\Utilities\PluralRules_Old.cs" />
+    <Compile Include="Utils\Format\Utilities\TimeSpanUtility.cs" />
+    <Compile Include="Utils\Logger\Configuration\ILoggerSettings.cs" />
+    <Compile Include="Utils\Logger\Configuration\LoggerDestructuringConfiguration.cs" />
+    <Compile Include="Utils\Logger\Configuration\LoggerEnrichmentConfiguration.cs" />
+    <Compile Include="Utils\Logger\Configuration\LoggerFilterConfiguration.cs" />
+    <Compile Include="Utils\Logger\Configuration\LoggerMinimumLevelConfiguration.cs" />
+    <Compile Include="Utils\Logger\Configuration\LoggerSettingsConfiguration-net40.cs" />
+    <Compile Include="Utils\Logger\Configuration\LoggerSinkConfiguration.cs" />
+    <Compile Include="Utils\Logger\Context\ImmutableStack.cs" />
+    <Compile Include="Utils\Logger\Context\LogContext.cs" />
+    <Compile Include="Utils\Logger\Core\Constants.cs" />
+    <Compile Include="Utils\Logger\Core\Enrichers\FixedPropertyEnricher.cs" />
+    <Compile Include="Utils\Logger\Core\Enrichers\PropertyEnricher.cs" />
+    <Compile Include="Utils\Logger\Core\Filters\DelegateFilter.cs" />
+    <Compile Include="Utils\Logger\Core\IDestructuringPolicy.cs" />
+    <Compile Include="Utils\Logger\Core\ILogEventEnricher.cs" />
+    <Compile Include="Utils\Logger\Core\ILogEventFilter.cs" />
+    <Compile Include="Utils\Logger\Core\ILogEventPropertyFactory.cs" />
+    <Compile Include="Utils\Logger\Core\ILogEventPropertyValueFactory.cs" />
+    <Compile Include="Utils\Logger\Core\ILogEventSink.cs" />
+    <Compile Include="Utils\Logger\Core\IMessageTemplateParser.cs" />
+    <Compile Include="Utils\Logger\Core\IScalarConversionPolicy.cs" />
+    <Compile Include="Utils\Logger\Core\LoggingLevelSwitch.cs" />
+    <Compile Include="Utils\Logger\Core\MessageTemplateFormatMethodAttribute.cs" />
+    <Compile Include="Utils\Logger\Core\Pipeline\Logger.cs" />
+    <Compile Include="Utils\Logger\Core\Pipeline\MessageTemplateCache.cs" />
+    <Compile Include="Utils\Logger\Core\Pipeline\SilentLogger.cs" />
+    <Compile Include="Utils\Logger\Core\Sinks\CopyingSink.cs" />
+    <Compile Include="Utils\Logger\Core\Sinks\FilteringSink.cs" />
+    <Compile Include="Utils\Logger\Core\Sinks\RestrictedSink.cs" />
+    <Compile Include="Utils\Logger\Core\Sinks\SafeAggregateSink.cs" />
+    <Compile Include="Utils\Logger\Debugging\LoggingFailedException.cs" />
+    <Compile Include="Utils\Logger\Debugging\SelfLog.cs" />
+    <Compile Include="Utils\Logger\Enrichers\LogContextEnricher.cs" />
+    <Compile Include="Utils\Logger\Enrichers\MachineNameEnricher.cs" />
+    <Compile Include="Utils\Logger\Enrichers\ProcessIdEnricher.cs" />
+    <Compile Include="Utils\Logger\Enrichers\ThreadIdEnricher.cs" />
+    <Compile Include="Utils\Logger\Events\DictionaryValue-net40.cs" />
+    <Compile Include="Utils\Logger\Events\LevelAlias.cs" />
+    <Compile Include="Utils\Logger\Events\LogEvent-net40.cs" />
+    <Compile Include="Utils\Logger\Events\LogEventLevel.cs" />
+    <Compile Include="Utils\Logger\Events\LogEventProperty.cs" />
+    <Compile Include="Utils\Logger\Events\LogEventPropertyValue.cs" />
+    <Compile Include="Utils\Logger\Events\MessageTemplate-net40.cs" />
+    <Compile Include="Utils\Logger\Events\ScalarValue.cs" />
+    <Compile Include="Utils\Logger\Events\SequenceValue-net40.cs" />
+    <Compile Include="Utils\Logger\Events\StructureValue-net40.cs" />
+    <Compile Include="Utils\Logger\Filters\Matching.cs" />
+    <Compile Include="Utils\Logger\Formatting\Display\LiteralStringValue.cs" />
+    <Compile Include="Utils\Logger\Formatting\Display\LogEventPropertyMessageValue-net40.cs" />
+    <Compile Include="Utils\Logger\Formatting\Display\MessageTemplateTextFormatter.cs" />
+    <Compile Include="Utils\Logger\Formatting\Display\OutputProperties-net40.cs" />
+    <Compile Include="Utils\Logger\Formatting\ITextFormatter.cs" />
+    <Compile Include="Utils\Logger\Formatting\Json\JsonFormatter-net40.cs" />
+    <Compile Include="Utils\Logger\Formatting\Raw\RawFormatter.cs" />
+    <Compile Include="Utils\Logger\ILogger.cs" />
+    <Compile Include="Utils\Logger\Log.cs" />
+    <Compile Include="Utils\Logger\LoggerConfiguration.cs" />
+    <Compile Include="Utils\Logger\LoggerConfigurationFullNetFxExtensions-net40.cs" />
+    <Compile Include="Utils\Logger\Parameters\DepthLimiter.cs" />
+    <Compile Include="Utils\Logger\Parameters\GetablePropertyFinder.cs" />
+    <Compile Include="Utils\Logger\Parameters\MessageTemplateProcessor.cs" />
+    <Compile Include="Utils\Logger\Parameters\PropertyBinder.cs" />
+    <Compile Include="Utils\Logger\Parameters\PropertyValueConverter-net40.cs" />
+    <Compile Include="Utils\Logger\Parsing\Alignment.cs" />
+    <Compile Include="Utils\Logger\Parsing\AlignmentDirection.cs" />
+    <Compile Include="Utils\Logger\Parsing\Destructuring.cs" />
+    <Compile Include="Utils\Logger\Parsing\MessageTemplateParser.cs" />
+    <Compile Include="Utils\Logger\Parsing\MessageTemplateToken-net40.cs" />
+    <Compile Include="Utils\Logger\Parsing\PropertyToken-net40.cs" />
+    <Compile Include="Utils\Logger\Parsing\TextToken-net40.cs" />
+    <Compile Include="Utils\Logger\Policies\ByteArrayScalarConversionPolicy.cs" />
+    <Compile Include="Utils\Logger\Policies\DelegateDestructuringPolicy.cs" />
+    <Compile Include="Utils\Logger\Policies\EnumScalarConversionPolicy-net40.cs" />
+    <Compile Include="Utils\Logger\Policies\NullableScalarConversionPolicy-net40.cs" />
+    <Compile Include="Utils\Logger\Policies\ProjectedDestructuringPolicy.cs" />
+    <Compile Include="Utils\Logger\Policies\ReflectionTypesScalarConversionPolicy.cs" />
+    <Compile Include="Utils\Logger\Policies\SimpleScalarConversionPolicy.cs" />
+    <Compile Include="Utils\Logger\Sinks\DiagnosticTrace\DiagnosticTraceSink.cs" />
+    <Compile Include="Utils\Logger\Sinks\IOFile\CharacterCountLimitedTextWriter.cs" />
+    <Compile Include="Utils\Logger\Sinks\IOFile\FileSink.cs" />
+    <Compile Include="Utils\Logger\Sinks\IOFile\NullSink.cs" />
+    <Compile Include="Utils\Logger\Sinks\IOTextWriter\TextWriterSink.cs" />
+    <Compile Include="Utils\Logger\Sinks\Observable\ObservableSink-net40.cs" />
+    <Compile Include="Utils\Logger\Sinks\PeriodicBatching\BatchedConnectionStatus.cs" />
+    <Compile Include="Utils\Logger\Sinks\PeriodicBatching\PeriodicBatchingSink-net40.cs" />
+    <Compile Include="Utils\Logger\Sinks\RollingFile\Clock.cs" />
+    <Compile Include="Utils\Logger\Sinks\RollingFile\RollingFileSink.cs" />
+    <Compile Include="Utils\Logger\Sinks\RollingFile\RollingLogFile.cs" />
+    <Compile Include="Utils\Logger\Sinks\RollingFile\TemplatedPathRoller.cs" />
+    <Compile Include="Utils\Logger\Sinks\SystemConsole\ColoredConsoleSink-net40.cs" />
+    <Compile Include="Utils\Logger\Sinks\SystemConsole\ConsoleSink.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
