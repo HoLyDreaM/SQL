@@ -7,7 +7,7 @@ using System.Linq;
 using System.Diagnostics;
 using SmartFormat;
 
-namespace SM_Lib.Utils
+namespace SQL.Utils
 {
     public static class cExtensions
     {

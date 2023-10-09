@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SM_Lib.Utils
+namespace SQL.Utils
 {
     public enum enmErrorLevel { Warning, Error, Fatal };
 

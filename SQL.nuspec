@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>HoLyDreaM-Data-Connections</id>
+    <version>2023090801</version>
+    <title>MS-SQL And Log Logging Tool</title>
+    <authors>HoLyDreaM</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <!-- <icon>icon.png</icon> -->
+    <projectUrl>https://github.com/HoLyDreaM/SQL/</projectUrl>
+    <description>MS-SQL And Log Logging Tool</description>
+    <releaseNotes>MS-SQL And Log Logging Tool</releaseNotes>
+    <copyright>Copyright 2023</copyright>
+    <tags>Tag1 Tag2</tags>
+  </metadata>
+</package>
