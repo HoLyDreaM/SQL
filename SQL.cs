@@ -16,6 +16,7 @@ using Tweetinvi.Core.Web;
 using Tweetinvi;
 using Tweetinvi.Models;
 using System.Net.Http;
+using RestSharp.Authenticators;
 
 namespace SQL
 {
