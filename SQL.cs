@@ -17,35 +17,42 @@ using Tweetinvi;
 using Tweetinvi.Models;
 using System.Net.Http;
 using RestSharp.Authenticators;
+using DevExpress.Utils.Drawing.Helpers;
 
 namespace SQL
 {
     public static class SQL
     {
-        public static bool TelegramSinyal(string strUrl, string strText, out string strMessage)
+        public static async Task<(bool Process, string Message)> TelegramSinyal(string strUrl, string strText)
         {
             bool blnResult = false;
-            strMessage = "";
+            string strMessage = "";
 
             try
             {
-                var client = new RestClient(strUrl);
-                client.Timeout = -1;
-                var request = new RestRequest(Method.POST);
+                var options = new RestClientOptions()
+                {
+                    MaxTimeout = -1,
+                };
+                var client = new RestClient(options);
+                var request = new RestRequest(strUrl, Method.Post);
                 request.AddHeader("Content-Type", "text/plain");
                 var body = strText;
                 request.AddParameter("text/plain", body, ParameterType.RequestBody);
-                IRestResponse response = client.Execute(request);
+                RestResponse response = client.ExecuteAsync(request).Result;
                 dynamic jsonResponseText = response.Content.ToString();
                 Root jsonResult = JsonConvert.DeserializeObject<Root>(jsonResponseText);
 
                 if (jsonResult == null)
                 {
+                    strMessage = "";
                     blnResult = false;
                 }
                 else
                 {
+                    strMessage = "";
                     blnResult = jsonResult.ok;
+
                 }
             }
             catch (Exception ex)
@@ -54,7 +61,7 @@ namespace SQL
                 blnResult = false;
             }
 
-            return blnResult;
+            return (blnResult, strMessage);
         }
         public static async Task<TwitDataResponse> TwiterSendMessage(string strText, string ApiKey, string ApiSecret, string AccesToken, string AccesTokenSecret)
         {
@@ -83,6 +90,64 @@ namespace SQL
             }
 
             return TResponse;
+        }
+        public static async Task<(bool Process, string Content)> AICreateMessage(string Msg, string API)
+        {
+            bool blnResult = false;
+            string strMessage = "";
+
+            try
+            {
+                List<Messagex> MData = new List<Messagex>();
+                var MsgData = new Messagex
+                {
+                    content = Msg,
+                    role = "user"
+                };
+                MData.Add(MsgData);
+
+                var MSGS = new AIMsg()
+                {
+                    model = "gpt-3.5-turbo",
+                    messages = MData
+                };
+
+                var options = new RestClientOptions()
+                {
+                    MaxTimeout = -1,
+                };
+                var client = new RestClient(options);
+                var request = new RestRequest("https://api.openai.com/v1/chat/completions", Method.Post);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {API}");
+                var body = JsonConvert.SerializeObject(MSGS);
+                //request.AddJsonBody(JsonConvert.SerializeObject(MSGS));
+                request.AddParameter("text/plain", body, ParameterType.RequestBody);
+                RestResponse response = client.ExecuteAsync(request).Result;
+                dynamic jsonResponseText = response.Content.ToString();
+                GPT jsonResult = JsonConvert.DeserializeObject<GPT>(jsonResponseText);
+
+                if (jsonResult == null)
+                {
+                    strMessage = "";
+                    blnResult = false;
+                }
+                else
+                {
+                    foreach (var item in jsonResult.choices)
+                    {
+                        strMessage = item.message.content.ToString();
+                        blnResult = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                strMessage = "Telegrama Sinyal Gönderilemedi.Detay:\n" + ex.Message.ToString();
+                blnResult = false;
+            }
+
+            return (blnResult, strMessage);
         }
         public static DataTable ToDataTable<T>(this IList<T> data)
         {
@@ -952,14 +1017,12 @@ namespace SQL
         public string title { get; set; }
         public string type { get; set; }
     }
-
     public class Entity
     {
         public int offset { get; set; }
         public int length { get; set; }
         public string type { get; set; }
     }
-
     public class Result
     {
         public int message_id { get; set; }
@@ -969,13 +1032,11 @@ namespace SQL
         public string text { get; set; }
         public List<Entity> entities { get; set; }
     }
-
     public class Root
     {
         public bool ok { get; set; }
         public Result result { get; set; }
     }
-
     public class SenderChat
     {
         public string id { get; set; }
@@ -1042,5 +1103,44 @@ namespace SQL
         public string ScreenName { get; set; }
         public string id { get; set; }
         public string Url { get; set; }
+    }
+    public class Choice
+    {
+        public int index { get; set; }
+        public Message message { get; set; }
+        public object logprobs { get; set; }
+        public string finish_reason { get; set; }
+    }
+    public class Message
+    {
+        public string role { get; set; }
+        public string content { get; set; }
+    }
+    public class GPT
+    {
+        public string id { get; set; }
+        public string @object { get; set; }
+        public int created { get; set; }
+        public string model { get; set; }
+        public List<Choice> choices { get; set; }
+        public Usage usage { get; set; }
+        public object system_fingerprint { get; set; }
+    }
+    public class Usage
+    {
+        public int prompt_tokens { get; set; }
+        public int completion_tokens { get; set; }
+        public int total_tokens { get; set; }
+    }
+    //
+    public class Messagex
+    {
+        public string role { get; set; }
+        public string content { get; set; }
+    }
+    public class AIMsg
+    {
+        public string model { get; set; }
+        public List<Messagex> messages { get; set; }
     }
 }
