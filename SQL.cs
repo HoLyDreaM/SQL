@@ -18,6 +18,7 @@ using Tweetinvi.Models;
 using System.Net.Http;
 using RestSharp.Authenticators;
 using DevExpress.Utils.Drawing.Helpers;
+using System.Net;
 
 namespace SQL
 {
@@ -63,12 +64,18 @@ namespace SQL
 
             return (blnResult, strMessage);
         }
-        public static async Task<TwitDataResponse> TwiterSendMessage(string strText, string ApiKey, string ApiSecret, string AccesToken, string AccesTokenSecret)
+        public static async Task<TwitDataResponse> TwiterSendMessage(string strText, string ApiKey, string ApiSecret, string AccesToken, string AccesTokenSecret, string Proxy = "")
         {
             TwitDataResponse TResponse = new TwitDataResponse();
             try
             {
                 var client = new TwitterClient(ApiKey, ApiSecret, AccesToken, AccesTokenSecret);
+
+                if(!string.IsNullOrEmpty(Proxy))
+                {
+                    client.Config.ProxyConfig = new ProxyConfig(Proxy);
+                }
+
                 var poster = new TweetsV2Poster(client);
 
                 var authenticatedUser = await client.Users.GetAuthenticatedUserAsync();
